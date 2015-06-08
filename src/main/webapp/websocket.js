@@ -59,7 +59,7 @@ function initPlane() {
 
     var planeTexture = new THREE.ImageUtils.loadTexture('images/grass.jpg');
     planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;
-    planeTexture.repeat.set(80, 20);
+    planeTexture.repeat.set(160, 40);
     var planeMaterial = new THREE.MeshBasicMaterial({map: planeTexture, side: THREE.DoubleSide});
     var planeGeometry = new THREE.PlaneBufferGeometry(PLANE_SIZE*2, PLANE_SIZE/2);
     planeGeometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
@@ -70,26 +70,7 @@ function initPlane() {
     var skyBoxGeometry = new THREE.CubeGeometry(10000, 10000, 10000);
     var skyBoxMaterial = new THREE.MeshBasicMaterial({color: 0x9999ff, side: THREE.BackSide});
     var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
-    /*
-    var imagePrefix = "images/fadeaway_";
-    var directions  = ["left", "right", "top", "top", "front", "back"];
-    var imageSuffix = ".jpg";
-    var skyGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
 
-    var materialArray = [];
-    for (var i = 0; i < 6; i++)
-    {
-        if (i == 3)
-            materialArray.push(new THREE.MeshBasicMaterial({
-            color: 0x9999ff, side: THREE.BackSide}));
-        else
-            materialArray.push( new THREE.MeshBasicMaterial({
-            map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
-            side: THREE.BackSide}));
-    }
-
-    var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
-    var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );*/
     scene.add( skyBox );
 
 
