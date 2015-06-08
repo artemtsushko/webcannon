@@ -51,12 +51,19 @@ public class GameServer {
 
     private String getTrajectory(double offsetX, double offsetY, double angle) {
         StringBuilder builder = new StringBuilder();
-        angle = angle % Math.PI;
+        angle = angle % (2 * Math.PI);
         double deltaX = 1;
         double deltaResultX = -deltaX;
-        if (angle > Math.PI / 2) {
+        if(angle > 1.5 * Math.PI) {
+            angle = 2 * Math.PI - angle;
+        } else if (angle > Math.PI / 2) {
             deltaResultX = -deltaResultX;
             angle = Math.PI - angle;
+        } else if (angle < - 1.5 * Math.PI) {
+            angle = 2 * Math.PI + angle;
+        } else if (angle < -Math.PI / 2) {
+            deltaResultX = -deltaResultX;
+            angle = -Math.PI - angle;
         }
         final double G = 9.81;
         final double speed = 80;
